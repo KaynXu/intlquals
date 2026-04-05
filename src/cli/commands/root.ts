@@ -1,4 +1,5 @@
 import { Command } from "commander";
+import { buildCacheCommand } from "./cache.js";
 import { buildDoctorCommand } from "./doctor.js";
 import { buildExportCommand } from "./export.js";
 import { buildRankCommand } from "./rank.js";
@@ -14,5 +15,6 @@ export function buildRootCommand(): Command {
     .addCommand(buildRankCommand())
     .addCommand(buildSchoolCommand())
     .addCommand(buildExportCommand())
+    .addCommand(buildCacheCommand())
     .addCommand(buildDoctorCommand());
 }
