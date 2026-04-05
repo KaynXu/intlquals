@@ -38,4 +38,26 @@ export class AdmitRankingClient {
 
     return response.body.json();
   }
+
+  async searchSchools(keyword = "", page = 1, size = 20): Promise<any> {
+    const response = await request(buildRankEntriesUrl(), {
+      method: "POST",
+      headers: JSON_HEADERS,
+      body: JSON.stringify({ keyword, pn: page, size })
+    });
+
+    return response.body.json();
+  }
+
+  async getSchool(comId: string): Promise<any> {
+    const response = await request(
+      `https://admitranking.com/mb/api/intl/school/getComDetailById?comId=${comId}`,
+      {
+        method: "GET",
+        headers: JSON_HEADERS
+      }
+    );
+
+    return response.body.json();
+  }
 }
