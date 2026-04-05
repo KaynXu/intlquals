@@ -2,15 +2,17 @@
 
 Terminal-first, AI-native CLI for international qualifications research.
 
-## Vision
+[中文说明 / Chinese README](./README.zh-CN.md)
 
-`intlquals` is not just trying to become a useful CLI for a niche workflow.
+## What It Is
 
-The long-term goal is to become the standard research and data workflow layer for the international qualifications ecosystem, starting with a terminal-first interface.
+`intlquals` is a focused CLI for international qualifications research workflows, starting with ranking and school research around AP, A-Level, and IB adjacent ecosystems.
 
-In practical terms, that means:
+It is built for power users who are comfortable with terminals, spreadsheets, scripts, and AI-assisted workflows.
 
-- collect data from multiple sources
+## Why It Exists
+
+- collect data from focused sources
 - normalize it into one consistent workflow
 - search, compare, and export it reliably
 - prepare clean inputs for spreadsheets, scripts, and AI analysis
@@ -19,60 +21,28 @@ In practical terms, that means:
 
 We believe AI is making command-line workflows more accessible and more powerful.
 
-The point is not to imitate GUI products inside a terminal. The point is to give power users a high-leverage control layer for research work: something composable, scriptable, automatable, and ready to connect with AI systems.
+The goal is not to imitate GUI products inside a terminal. The goal is to provide a high-leverage control layer for research work that is composable, scriptable, automatable, and ready to connect with AI systems.
 
-For `intlquals`, CLI is the first interface, not the final boundary.
-
-## Quick Start
-
-```bash
-npm install
-npm run dev -- source list
-npm run dev -- rank list
-npm run dev -- school search --keyword "AP"
-```
-
-Current status:
+## Current Scope
 
 - early MVP
 - first provider: AdmitRanking
-- primary workflow: ranking and school research
+- current focus: ranking and school research
 
 Requirements:
 
 - Node.js 22+
 
-## Install and Local Development
-
-Clone the repository and install dependencies:
+## Quick Start
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/KaynXu/intlquals.git
 cd intlquals
 npm install
-```
-
-Run the CLI in development mode:
-
-```bash
 npm run dev -- source list
+npm run dev -- rank list
+npm run dev -- school search --keyword "AP"
 ```
-
-Run verification locally:
-
-```bash
-npm test
-npm run lint:types
-npm run build
-```
-
-## MVP
-
-- AdmitRanking provider
-- ranking list, detail, and entries
-- school search, detail, and compare
-- export to JSON, CSV, and Markdown
-- provider-first architecture for future expansion
 
 ## Examples
 
@@ -87,10 +57,18 @@ npm run build
 - `iq cache status`
 - `iq doctor`
 
-## Development Workflow
+## Development
 
-- External contribution guide: [CONTRIBUTING.md](/Users/ark.mini/Desktop/untitled%20folder/CONTRIBUTING.md)
-- Team Git workflow and collaboration rules: [docs/team-development.md](/Users/ark.mini/Desktop/untitled%20folder/docs/team-development.md)
+Run local verification:
+
+```bash
+npm test
+npm run lint:types
+npm run build
+```
+
+- Contribution guide: [CONTRIBUTING.md](./CONTRIBUTING.md)
+- Compliance notes: [docs/compliance.md](./docs/compliance.md)
 
 ## Roadmap
 
@@ -101,14 +79,8 @@ npm run build
 - school search, detail, compare, and export
 - JSON, CSV, and Markdown output
 
-### v0.2
+### Next
 
-- stronger filtering and search ergonomics
-- better snapshot and cache behavior
-- improved export polish and comparison views
-
-### v1.0
-
-- second provider
-- stronger provider registry and extension points
-- AI-ready analysis hooks on top of normalized data
+- stronger school search filters
+- better export polish
+- additional providers after the core workflow is stable
