@@ -2,6 +2,27 @@
 
 Terminal-first, AI-native CLI for international qualifications research.
 
+## Vision
+
+`intlquals` is not just trying to become a useful CLI for a niche workflow.
+
+The long-term goal is to become the standard research and data workflow layer for the international qualifications ecosystem, starting with a terminal-first interface.
+
+In practical terms, that means:
+
+- collect data from multiple sources
+- normalize it into one consistent workflow
+- search, compare, and export it reliably
+- prepare clean inputs for spreadsheets, scripts, and AI analysis
+
+## Why CLI
+
+We believe AI is making command-line workflows more accessible and more powerful.
+
+The point is not to imitate GUI products inside a terminal. The point is to give power users a high-leverage control layer for research work: something composable, scriptable, automatable, and ready to connect with AI systems.
+
+For `intlquals`, CLI is the first interface, not the final boundary.
+
 ## Quick Start
 
 ```bash
