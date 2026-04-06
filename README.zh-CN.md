@@ -40,15 +40,15 @@ git clone https://github.com/KaynXu/intlquals.git
 cd intlquals
 npm install
 npm run dev -- source list
-npm run dev -- rank list
+npm run dev -- rank admitranking list
 npm run dev -- school search --keyword "AP"
 ```
 
 ## 常用示例
 
-- `iq rank list`
-- `iq rank show 52`
-- `iq rank entries 52 --page 1 --size 20`
+- `iq rank admitranking list`
+- `iq rank admitranking show 52`
+- `iq rank admitranking school 90`
 - `iq school search --keyword "AP"`
 - `iq school show 90`
 - `iq school compare 90 103 32`
