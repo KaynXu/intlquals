@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { buildRootCommand } from "./commands/root.js";
 
 async function main() {

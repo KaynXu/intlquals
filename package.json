@@ -4,7 +4,7 @@
   "description": "Terminal-first, AI-native CLI for international qualifications research.",
   "type": "module",
   "bin": {
-    "iq": "./dist/cli/index.js"
+    "iq": "./dist/index.js"
   },
   "scripts": {
     "build": "tsup",
