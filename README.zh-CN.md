@@ -39,9 +39,8 @@
 git clone https://github.com/KaynXu/intlquals.git
 cd intlquals
 npm install
-npm run dev -- source list
 npm run dev -- rank admitranking list
-npm run dev -- school search --keyword "AP"
+npm run dev -- rank admitranking show 52
 ```
 
 ## 常用示例
@@ -49,13 +48,6 @@ npm run dev -- school search --keyword "AP"
 - `iq rank admitranking list`
 - `iq rank admitranking show 52`
 - `iq rank admitranking school 90`
-- `iq school search --keyword "AP"`
-- `iq school show 90`
-- `iq school compare 90 103 32`
-- `iq export rank 52 --format csv --output ranks.csv`
-- `iq export school 90 --format json --output school.json`
-- `iq cache status`
-- `iq doctor`
 
 ## 开发与验证
 
@@ -75,12 +67,12 @@ npm run build
 ### v0.1
 
 - AdmitRanking provider
-- 榜单列表、详情与榜单条目
-- 学校搜索、详情、对比与导出
-- JSON、CSV、Markdown 输出
+- provider 作用域下的榜单列表
+- 带学校内容的榜单详情
+- provider 作用域下的学校详情
 
 ### 下一步
 
-- 更强的学校筛选能力
-- 更好的导出体验
+- 更强的学校输出能力
+- 更好的榜单展示体验
 - 在核心工作流稳定后接入更多 provider

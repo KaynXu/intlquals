@@ -39,9 +39,8 @@ Requirements:
 git clone https://github.com/KaynXu/intlquals.git
 cd intlquals
 npm install
-npm run dev -- source list
 npm run dev -- rank admitranking list
-npm run dev -- school search --keyword "AP"
+npm run dev -- rank admitranking show 52
 ```
 
 ## Examples
@@ -49,13 +48,6 @@ npm run dev -- school search --keyword "AP"
 - `iq rank admitranking list`
 - `iq rank admitranking show 52`
 - `iq rank admitranking school 90`
-- `iq school search --keyword "AP"`
-- `iq school show 90`
-- `iq school compare 90 103 32`
-- `iq export rank 52 --format csv --output ranks.csv`
-- `iq export school 90 --format json --output school.json`
-- `iq cache status`
-- `iq doctor`
 
 ## Development
 
@@ -75,12 +67,12 @@ npm run build
 ### v0.1
 
 - AdmitRanking provider
-- ranking list, detail, and entries
-- school search, detail, compare, and export
-- JSON, CSV, and Markdown output
+- provider-scoped ranking list
+- ranking show with collected schools
+- provider-scoped school detail
 
 ### Next
 
-- stronger school search filters
-- better export polish
+- stronger school output
+- better ranking presentation
 - additional providers after the core workflow is stable

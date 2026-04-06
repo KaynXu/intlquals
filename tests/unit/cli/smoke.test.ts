@@ -6,4 +6,10 @@ describe("root command", () => {
     const command = buildRootCommand();
     expect(command.description()).toContain("international qualifications");
   });
+
+  it("only exposes the rank command at the root level", () => {
+    const command = buildRootCommand();
+
+    expect(command.commands.map((subcommand) => subcommand.name())).toEqual(["rank"]);
+  });
 });
