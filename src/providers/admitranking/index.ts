@@ -24,11 +24,6 @@ export class AdmitRankingProvider {
     );
   }
 
-  async searchSchools(keyword = "", page = 1, size = 20) {
-    const payload = await this.client.searchSchools(keyword, page, size);
-    return payload.data.list.map((item: Record<string, unknown>) => mapSchool(item));
-  }
-
   async getSchool(comId: string) {
     const payload = await this.client.getSchool(comId);
     return mapSchool(payload.data);

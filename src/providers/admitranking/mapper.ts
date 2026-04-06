@@ -1,5 +1,5 @@
-import type { Ranking, RankingEntry } from "../../domain/models/ranking.js";
-import type { School } from "../../domain/models/school.js";
+import type { Ranking, RankingEntry } from "../../domain/admitranking/models/ranking.js";
+import type { School } from "../../domain/admitranking/models/school.js";
 import { admitRankingEntrySchema, admitRankingListItemSchema } from "./schemas.js";
 
 export function mapRankingListItem(input: Record<string, unknown>): Ranking {

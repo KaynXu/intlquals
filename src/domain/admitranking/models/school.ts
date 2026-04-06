@@ -1,5 +1,3 @@
-import type { SourceRecord } from "./source.js";
-
 export interface School {
   id: string;
   provider: string;
@@ -13,5 +11,4 @@ export interface School {
   gradeRange?: string;
   tags: string[];
   stats: Record<string, unknown>;
-  sourceRef?: SourceRecord;
 }

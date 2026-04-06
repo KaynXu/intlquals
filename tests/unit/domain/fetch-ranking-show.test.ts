@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fetchAdmitRankingShow } from "../../../src/domain/services/fetch-rankings.js";
+import { fetchAdmitRankingShow } from "../../../src/domain/admitranking/services/fetch-rankings.js";
 
 describe("fetchAdmitRankingShow", () => {
   it("returns ranking metadata and the schools collected under that ranking", async () => {

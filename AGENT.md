@@ -94,12 +94,40 @@ If the change is docs-only, say so clearly in the merge note or PR.
 When adding new behavior, prefer this split:
 
 - `src/cli`: command definitions and argument parsing
-- `src/domain`: use cases and domain models
 - `src/providers`: external data source adapters
-- `src/infra`: shared low-level utilities
-- `src/core`: config, logging, errors, shared primitives
+- `src/domain/<provider-id>`: provider-specific use cases and domain models
 
-中文：命令层负责“接命令”，领域层负责“做事情”，provider 层负责“接外部数据”。
+中文：命令层负责“接命令”，每个 provider 拥有自己对应的 domain，provider 层负责“接外部数据”。
+
+## Provider-First Architecture Policy / 以 Provider 为先的架构策略
+
+- Prefer `one provider, one domain`.
+- Each provider must have its own folder under `src/providers/<provider-id>/`.
+- Each provider must have its own matching domain area under `src/domain/<provider-id>/`.
+- Do not introduce a shared global domain by default.
+- Do not force different providers into one fake universal entity shape.
+
+中文：
+
+- 采用 `one provider, one domain` 原则。
+- 每个 provider 都必须在 `src/providers/<provider-id>/` 下拥有自己的文件夹。
+- 每个 provider 也必须在 `src/domain/<provider-id>/` 下拥有自己的对应 domain 区域。
+- 默认不建立全局共享 domain。
+- 不要为了表面统一，强行把不同 provider 塞进一个假的通用实体里。
+
+## Domain Evolution Rule / Domain 演进规则
+
+- Keep each provider's domain self-contained.
+- When a new provider arrives, create a new provider folder and a new matching domain folder.
+- Shared abstractions are the exception, not the default.
+- If a future shared contract is introduced, it must be justified explicitly and kept extremely small.
+
+中文：
+
+- 每个 provider 的 domain 应尽量自包含。
+- 当新 provider 接入时，新建自己的 provider 文件夹和对应的 domain 文件夹。
+- 共享抽象是例外，不是默认做法。
+- 如果未来真的要引入共享契约，必须单独论证，而且要保持极小。
 
 ## Collaboration Notes / 协作说明
 

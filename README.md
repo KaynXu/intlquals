@@ -14,7 +14,7 @@ It is built for power users who are comfortable with terminals, spreadsheets, sc
 
 - collect data from focused sources
 - normalize it into one consistent workflow
-- search, compare, and export it reliably
+- inspect focused ranking and school data reliably
 - prepare clean inputs for spreadsheets, scripts, and AI analysis
 
 ## Why CLI
@@ -28,6 +28,16 @@ The goal is not to imitate GUI products inside a terminal. The goal is to provid
 - early MVP
 - first provider: AdmitRanking
 - current focus: ranking and school research
+
+## Current Architecture
+
+The current codebase follows `one provider, one domain`.
+
+For the MVP, that means:
+
+- `src/providers/admitranking/*` handles AdmitRanking source integration
+- `src/domain/admitranking/*` handles AdmitRanking-specific domain models and use cases
+- `src/cli/*` exposes the terminal command surface
 
 Requirements:
 

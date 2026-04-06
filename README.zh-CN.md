@@ -14,7 +14,7 @@
 
 - 聚合聚焦的数据源
 - 统一成可复用的工作流
-- 稳定地搜索、对比、导出
+- 稳定地查看聚焦的榜单与学校数据
 - 为表格、脚本和 AI 分析准备干净输入
 
 ## 为什么是 CLI
@@ -28,6 +28,16 @@
 - 早期 MVP
 - 首个 provider: AdmitRanking
 - 当前重点: 榜单与学校研究
+
+## 当前架构
+
+当前代码结构遵循 `one provider, one domain`。
+
+在 MVP 阶段，这意味着：
+
+- `src/providers/admitranking/*` 负责 AdmitRanking 数据源接入
+- `src/domain/admitranking/*` 负责 AdmitRanking 专属的 domain 模型与业务动作
+- `src/cli/*` 负责终端命令面
 
 环境要求：
 

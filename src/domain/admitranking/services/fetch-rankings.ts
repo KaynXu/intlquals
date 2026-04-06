@@ -1,4 +1,4 @@
-import { AdmitRankingProvider } from "../../providers/admitranking/index.js";
+import { AdmitRankingProvider } from "../../../providers/admitranking/index.js";
 import type { Ranking, RankingEntry } from "../models/ranking.js";
 
 const provider = new AdmitRankingProvider();
@@ -22,11 +22,7 @@ export async function fetchRanking(rankId: string) {
   return provider.getRanking(rankId);
 }
 
-export async function fetchRankingEntries(
-  rankId: string,
-  page = 1,
-  size = 20
-) {
+export async function fetchRankingEntries(rankId: string, page = 1, size = 20) {
   return provider.listRankingEntries(rankId, page, size);
 }
 

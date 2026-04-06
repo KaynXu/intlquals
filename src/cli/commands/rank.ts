@@ -2,8 +2,8 @@ import { Command } from "commander";
 import {
   fetchAdmitRankingShow,
   fetchRankingList
-} from "../../domain/services/fetch-rankings.js";
-import { fetchSchool } from "../../domain/services/fetch-schools.js";
+} from "../../domain/admitranking/services/fetch-rankings.js";
+import { fetchSchool } from "../../domain/admitranking/services/fetch-schools.js";
 
 export function buildRankCommand(): Command {
   const command = new Command("rank").description("Fetch and inspect rankings.");
