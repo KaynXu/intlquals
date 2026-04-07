@@ -12,11 +12,6 @@ export class AdmitRankingProvider {
     );
   }
 
-  async getRanking(rankId: string) {
-    const payload = await this.client.getRankDetail(rankId);
-    return mapRankingListItem(payload.data);
-  }
-
   async listRankingEntries(rankId: string, page = 1, size = 20) {
     const payload = await this.client.getRankEntries(rankId, page, size);
     return payload.data.list.map((item: Record<string, unknown>) =>

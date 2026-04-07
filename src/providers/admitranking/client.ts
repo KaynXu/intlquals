@@ -1,9 +1,5 @@
 import { request } from "undici";
-import {
-  buildRankDetailUrl,
-  buildRankEntriesUrl,
-  buildRankListUrl
-} from "./endpoints.js";
+import { buildRankEntriesUrl, buildRankListUrl } from "./endpoints.js";
 
 const JSON_HEADERS = {
   "X-Requested-With": "XMLHttpRequest",
@@ -13,15 +9,6 @@ const JSON_HEADERS = {
 export class AdmitRankingClient {
   async getRankList(page = 1, size = 20): Promise<any> {
     const response = await request(buildRankListUrl(page, size), {
-      method: "GET",
-      headers: JSON_HEADERS
-    });
-
-    return response.body.json();
-  }
-
-  async getRankDetail(rankId: string): Promise<any> {
-    const response = await request(buildRankDetailUrl(rankId), {
       method: "GET",
       headers: JSON_HEADERS
     });

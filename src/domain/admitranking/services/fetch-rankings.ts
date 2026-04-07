@@ -5,21 +5,16 @@ const provider = new AdmitRankingProvider();
 
 export interface RankingProvider {
   listRankings(page?: number, size?: number): Promise<Ranking[]>;
-  getRanking(rankId: string): Promise<Ranking>;
   listRankingEntries(rankId: string, page?: number, size?: number): Promise<RankingEntry[]>;
 }
 
 export interface AdmitRankingShowProvider {
-  getRanking(rankId: string): Promise<Ranking>;
+  listRankings(page?: number, size?: number): Promise<Ranking[]>;
   listRankingEntries(rankId: string, page?: number, size?: number): Promise<RankingEntry[]>;
 }
 
 export async function fetchRankingList(page = 1, size = 20) {
   return provider.listRankings(page, size);
-}
-
-export async function fetchRanking(rankId: string) {
-  return provider.getRanking(rankId);
 }
 
 export async function fetchRankingEntries(rankId: string, page = 1, size = 20) {
@@ -33,10 +28,15 @@ export async function fetchAdmitRankingShow(
 ) {
   const page = options.page ?? 1;
   const size = options.size ?? 20;
-  const [ranking, schools] = await Promise.all([
-    currentProvider.getRanking(rankId),
+  const [rankings, schools] = await Promise.all([
+    currentProvider.listRankings(),
     currentProvider.listRankingEntries(rankId, page, size)
   ]);
+  const ranking = rankings.find((item) => item.id === rankId);
+
+  if (!ranking) {
+    throw new Error(`Ranking not found: ${rankId}`);
+  }
 
   return {
     ranking,

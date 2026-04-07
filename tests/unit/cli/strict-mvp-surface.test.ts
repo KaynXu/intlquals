@@ -78,4 +78,28 @@ describe("strict MVP surface", () => {
       )
     ).toEqual(requiredProviderDomainPaths);
   });
+
+  it("does not keep the unused rank detail path in the current MVP", () => {
+    const domainSource = readFileSync(
+      path.join(rootDir, "src/domain/admitranking/services/fetch-rankings.ts"),
+      "utf8"
+    );
+    const providerSource = readFileSync(
+      path.join(rootDir, "src/providers/admitranking/index.ts"),
+      "utf8"
+    );
+    const clientSource = readFileSync(
+      path.join(rootDir, "src/providers/admitranking/client.ts"),
+      "utf8"
+    );
+    const endpointSource = readFileSync(
+      path.join(rootDir, "src/providers/admitranking/endpoints.ts"),
+      "utf8"
+    );
+
+    expect(domainSource.includes("getRanking")).toBe(false);
+    expect(providerSource.includes("getRanking")).toBe(false);
+    expect(clientSource.includes("getRankDetail")).toBe(false);
+    expect(endpointSource.includes("buildRankDetailUrl")).toBe(false);
+  });
 });

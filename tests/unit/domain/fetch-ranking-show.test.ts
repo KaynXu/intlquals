@@ -2,14 +2,16 @@ import { describe, expect, it } from "vitest";
 import { fetchAdmitRankingShow } from "../../../src/domain/admitranking/services/fetch-rankings.js";
 
 describe("fetchAdmitRankingShow", () => {
-  it("returns ranking metadata and the schools collected under that ranking", async () => {
+  it("returns ranking metadata from the ranking list and the schools collected under that ranking", async () => {
     const provider = {
-      getRanking: async (rankId: string) => ({
-        id: rankId,
-        provider: "admitranking",
-        title: "Best Public Intl Departments",
-        year: 2026
-      }),
+      listRankings: async () => [
+        {
+          id: "52",
+          provider: "admitranking",
+          title: "Best Public Intl Departments",
+          year: 2026
+        }
+      ],
       listRankingEntries: async (rankId: string, page: number, size: number) => [
         {
           rankingId: rankId,
@@ -40,5 +42,16 @@ describe("fetchAdmitRankingShow", () => {
       page: 2,
       size: 10
     });
+  });
+
+  it("throws when the requested ranking does not exist in the ranking list", async () => {
+    const provider = {
+      listRankings: async () => [],
+      listRankingEntries: async () => []
+    };
+
+    await expect(fetchAdmitRankingShow("999", {}, provider)).rejects.toThrow(
+      "Ranking not found: 999"
+    );
   });
 });
