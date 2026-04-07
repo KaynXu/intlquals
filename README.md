@@ -14,7 +14,7 @@ It is built for power users who are comfortable with terminals, spreadsheets, sc
 
 - collect data from focused sources
 - normalize it into one consistent workflow
-- search, compare, and export it reliably
+- inspect focused ranking and school data reliably
 - prepare clean inputs for spreadsheets, scripts, and AI analysis
 
 ## Why CLI
@@ -29,6 +29,16 @@ The goal is not to imitate GUI products inside a terminal. The goal is to provid
 - first provider: AdmitRanking
 - current focus: ranking and school research
 
+## Current Architecture
+
+The current codebase follows `one provider, one domain`.
+
+For the MVP, that means:
+
+- `src/providers/admitranking/*` handles AdmitRanking source integration
+- `src/domain/admitranking/*` handles AdmitRanking-specific domain models and use cases
+- `src/cli/*` exposes the terminal command surface
+
 Requirements:
 
 - Node.js 22+
@@ -40,14 +50,36 @@ git clone https://github.com/KaynXu/intlquals.git
 cd intlquals
 npm install
 npm run dev -- rank admitranking list
+npm run dev -- rank admitranking list --year 2025
+npm run dev -- rank admitranking list --all-years
 npm run dev -- rank admitranking show 52
+npm run dev -- rank admitranking school --help
+npm run dev -- rank admitranking school 12523
+npm run dev -- rank admitranking school 12523 apply
 ```
 
 ## Examples
 
 - `iq rank admitranking list`
+- `iq rank admitranking list --year 2025`
+- `iq rank admitranking list --all-years`
 - `iq rank admitranking show 52`
-- `iq rank admitranking school 90`
+- `iq rank admitranking school --help`
+- `iq rank admitranking school 12523`
+- `iq rank admitranking school 12523 apply`
+- `iq rank admitranking school 12523 contact`
+- `iq rank admitranking school 12523 media`
+- `iq rank admitranking school 12523 signals`
+
+Current command semantics:
+
+- `list` returns the ranking directory
+- `list --year <year>` returns discovered rankings from one year
+- `list --all-years` returns discovered rankings grouped by year
+- `show <rankId>` returns a lightweight ranked school list
+- `school --help` shows the available detail sections
+- `school <schoolId>` defaults to `overview`
+- `school <schoolId> <section>` returns one requested school detail section
 
 ## Development
 
