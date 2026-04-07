@@ -50,14 +50,36 @@ git clone https://github.com/KaynXu/intlquals.git
 cd intlquals
 npm install
 npm run dev -- rank admitranking list
+npm run dev -- rank admitranking list --year 2025
+npm run dev -- rank admitranking list --all-years
 npm run dev -- rank admitranking show 52
+npm run dev -- rank admitranking school --help
+npm run dev -- rank admitranking school 12523
+npm run dev -- rank admitranking school 12523 apply
 ```
 
 ## Examples
 
 - `iq rank admitranking list`
+- `iq rank admitranking list --year 2025`
+- `iq rank admitranking list --all-years`
 - `iq rank admitranking show 52`
-- `iq rank admitranking school 90`
+- `iq rank admitranking school --help`
+- `iq rank admitranking school 12523`
+- `iq rank admitranking school 12523 apply`
+- `iq rank admitranking school 12523 contact`
+- `iq rank admitranking school 12523 media`
+- `iq rank admitranking school 12523 signals`
+
+Current command semantics:
+
+- `list` returns the ranking directory
+- `list --year <year>` returns discovered rankings from one year
+- `list --all-years` returns discovered rankings grouped by year
+- `show <rankId>` returns a lightweight ranked school list
+- `school --help` shows the available detail sections
+- `school <schoolId>` defaults to `overview`
+- `school <schoolId> <section>` returns one requested school detail section
 
 ## Development
 

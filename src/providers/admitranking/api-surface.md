@@ -14,7 +14,7 @@
 
 ## A. 当前 CLI 已接入的核心接口
 
-这 3 个接口就是当前 `intlquals` AdmitRanking provider 真正依赖的一级 raw data categories。
+这 4 个接口就是当前 `intlquals` AdmitRanking provider 真正依赖的一级 raw data categories。
 
 ### 1. `GET /mb/api/intl/rank/getRankByType`
 
@@ -30,7 +30,28 @@
 - [client.ts](./client.ts)
 - [mapper.ts](./mapper.ts)
 
-### 2. `POST /mb/api/intl/school/getComPageRankEnV2`
+### 2. `GET /mb/api/intl/rank/getRankDetail`
+
+中文：获取单个榜单详情页信息
+
+当前用途：
+
+- `iq rank admitranking list --year <year>`
+- `iq rank admitranking list --all-years`
+
+说明：
+
+- 当前不是拿它来做 `show`
+- 当前是用它发现仍然可访问、但未在公开目录接口中列出的历史榜单
+
+当前代码位置：
+
+- [endpoints.ts](./endpoints.ts)
+- [client.ts](./client.ts)
+- [index.ts](./index.ts)
+- [mapper.ts](./mapper.ts)
+
+### 3. `POST /mb/api/intl/school/getComPageRankEnV2`
 
 中文：获取某个榜单下的学校条目列表
 
@@ -44,7 +65,7 @@
 - [client.ts](./client.ts)
 - [mapper.ts](./mapper.ts)
 
-### 3. `GET /mb/api/intl/school/getComDetailById`
+### 4. `GET /mb/api/intl/school/getComDetailById`
 
 中文：获取单个学校详情
 
@@ -62,10 +83,6 @@
 这些接口仍然围绕国际学校、榜单、学校详情、评价和筛选，属于后续最值得研究的一层。
 
 ### Rank
-
-- `/mb/api/intl/rank/getRankDetail`
-  中文：获取单个榜单详情页信息
-  备注：已确认存在，但当前 CLI 不再使用。因为当前 `show` 被定义为“看榜单内容”，榜单头信息直接来自 `getRankByType` 即可。
 
 - `/mb/api/intl/rank/getSmallRankByComId`
   中文：按学校获取细分榜单/子榜单信息
@@ -243,4 +260,4 @@
 一句话总结：
 
 AdmitRanking 远不止 4 个接口。  
-但当前 `intlquals` 的 AdmitRanking provider，当前运行只依赖 A 档那 3 个核心接口。
+但当前 `intlquals` 的 AdmitRanking provider，当前运行依赖 A 档那 4 个核心接口。

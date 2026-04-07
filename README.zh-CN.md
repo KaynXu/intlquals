@@ -50,14 +50,36 @@ git clone https://github.com/KaynXu/intlquals.git
 cd intlquals
 npm install
 npm run dev -- rank admitranking list
+npm run dev -- rank admitranking list --year 2025
+npm run dev -- rank admitranking list --all-years
 npm run dev -- rank admitranking show 52
+npm run dev -- rank admitranking school --help
+npm run dev -- rank admitranking school 12523
+npm run dev -- rank admitranking school 12523 apply
 ```
 
 ## 常用示例
 
 - `iq rank admitranking list`
+- `iq rank admitranking list --year 2025`
+- `iq rank admitranking list --all-years`
 - `iq rank admitranking show 52`
-- `iq rank admitranking school 90`
+- `iq rank admitranking school --help`
+- `iq rank admitranking school 12523`
+- `iq rank admitranking school 12523 apply`
+- `iq rank admitranking school 12523 contact`
+- `iq rank admitranking school 12523 media`
+- `iq rank admitranking school 12523 signals`
+
+当前命令语义：
+
+- `list` 返回榜单目录
+- `list --year <year>` 返回指定年份的已发现榜单
+- `list --all-years` 按年份分组返回已发现榜单
+- `show <rankId>` 返回轻量榜单学校列表
+- `school --help` 显示可用详情分块
+- `school <schoolId>` 默认返回 `overview`
+- `school <schoolId> <section>` 返回指定学校详情分块
 
 ## 开发与验证
 
